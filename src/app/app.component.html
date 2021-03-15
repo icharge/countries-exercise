@@ -308,9 +308,13 @@
 </div>
 
 <div class="content" role="main">
+  <mat-form-field class="example-full-width">
+    <mat-label>Search country</mat-label>
+    <input matInput placeholder="Ex. Thailand" value="" (keyup)="search($event)" />
+  </mat-form-field>
   <mat-list>
     <div mat-subheader>Countries</div>
-    <mat-list-item *ngFor="let country of filtered$ | async">
+    <mat-list-item *ngFor="let country of filtered">
       <!-- <mat-icon mat-list-icon>folder</mat-icon> -->
       <div mat-list-icon class="flag-wrapper">
         <img class="country-flag" [src]="country.flag" [alt]="country.flag" />

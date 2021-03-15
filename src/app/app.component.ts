@@ -12,27 +12,39 @@ import { CountryService } from './service/country.service';
 export class AppComponent implements OnInit, OnDestroy {
   title = 'countries';
 
-  countriesSub: Subscription;
+  countries$: Subscription;
   countries: Country[];
-  filtered$: Observable<Country[]>;
+  filtered: Country[];
   private searchText$ = new Subject<string>();
 
   constructor(private countryService: CountryService) {}
 
   ngOnInit(): void {
-    this.countriesSub = this.countryService
+    this.countries$ = this.countryService
       .loadAllCountries()
       .subscribe((countries) => {
         this.countries = countries;
-        this.filtered$ = of(countries);
+        this.filtered = countries;
       });
 
-    this.filtered$ = this.searchText$.pipe(
+    /* this.filtered$ = this.searchText$.pipe(
       map((search) => this.countries.filter((c) => c.name === search))
-    );
+    ); */
+    this.searchText$.subscribe((search) => {
+      this.filtered = this.countries.filter(
+        (c) => `${c.name}`.toLowerCase().indexOf(`${search}`.toLowerCase()) >= 0
+      );
+    });
   }
 
   ngOnDestroy(): void {
-    this.countriesSub?.unsubscribe();
+    this.countries$?.unsubscribe();
+    this.searchText$?.unsubscribe();
+  }
+
+  search(e: any): void {
+    const { value } = e.target;
+    console.debug('search key up ' + value);
+    this.searchText$.next(value);
   }
 }
