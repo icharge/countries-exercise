@@ -18,7 +18,7 @@ export class CountryService {
     this.handleError = httpErrorHandler.createHandleError('CountryService');
   }
 
-  loadAllCountries() {
+  loadAllCountries(): Observable<Country[]> {
     return this.http.get(countryUrl).pipe(
       map((countries: CountryResponse[]) =>
         countries.map(
