@@ -294,10 +294,33 @@ svg#clouds {
   }
 }
 
-.mat-list-base .mat-list-item .mat-list-icon.flag-wrapper {
-  width: 36px;
+.country-list {
+
+  .item {
+    margin: 1em;
+    padding: 0;
+  }
+
+  .country-flag {
+    width: 100%;
+  }
+
+  .mat-list-icon.flag-wrapper {
+    width: 36px;
+  }
+
+  .description {
+    .sub {
+      color: gray;
+    }
+  }
+
+  .suffix {
+    font-size: .8em;
+    text-align: center;
+  }
 }
 
-.country-flag {
-  width: 100%;
-}
+
+
+

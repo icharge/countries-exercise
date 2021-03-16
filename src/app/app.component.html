@@ -12,26 +12,39 @@
 <div class="content" role="main">
   <mat-form-field>
     <mat-label>Search country</mat-label>
-    <input matInput placeholder="Ex. Thailand" value="" (keyup)="search($event)" />
+    <input
+      matInput
+      placeholder="Ex. Thailand"
+      value=""
+      (keyup)="search($event)"
+    />
   </mat-form-field>
-  <mat-list>
+  <mat-list class="country-list">
     <div mat-subheader>Countries</div>
-    <mat-list-item *ngFor="let country of filtered">
-      <!-- <mat-icon mat-list-icon>folder</mat-icon> -->
-      <div mat-list-icon class="flag-wrapper">
-        <img class="country-flag" [src]="country.flag" [alt]="country.flag" />
-      </div>
-      <div mat-line>{{ country.name }}</div>
-      <div mat-line>
-        <a
-          [href]="
-            'https://www.google.com/maps/search/?api=1&query=' + country.name
-          "
-          target="_blank"
-          >See on map</a
-        >
-      </div>
-    </mat-list-item>
+    <mat-card *ngFor="let country of filtered" class="item">
+      <mat-list-item>
+        <div mat-list-icon class="flag-wrapper">
+          <img class="country-flag" [src]="country.flag" [alt]="country.flag" />
+        </div>
+        <div mat-line class="name">
+          <a
+            [href]="
+              'https://www.google.com/maps/search/?api=1&query=' + country.name
+            "
+            target="_blank"
+            >{{ country.name }}</a
+          >
+        </div>
+        <div mat-line class="description">
+          {{ country.capital || "N/A" }},
+          <span class="sub">{{ country.subregion || "N/A" }}</span>
+        </div>
+        <div class="suffix">
+          <div class="label">Population</div>
+          <div class="value">{{ country.population | numberFormat }}</div>
+        </div>
+      </mat-list-item>
+    </mat-card>
   </mat-list>
 
   <svg
