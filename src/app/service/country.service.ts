@@ -24,10 +24,13 @@ export class CountryService {
         countries.map(
           (country) =>
             ({
-              id: country.regionalBlocs?.[0]?.acronym || country.name,
+              id: `${country.region}_${country.cioc}_${country.demonym}`,
+              flag: country.flag,
               name: country.name,
               latlng: country.latlng,
-              flag: country.flag,
+              capital: country.capital,
+              subregion: country.subregion,
+              population: country.population,
             } as Country)
         )
       ),

@@ -1,6 +1,9 @@
 export interface Country {
   id: string; // use `acronym`
-  name?: string;
-  latlng?: number[];
-  flag?: string;
+  flag: string;
+  name: string;
+  latlng: number[];
+  capital: string;
+  subregion: string;
+  population: number;
 }
