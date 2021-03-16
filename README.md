@@ -1,6 +1,19 @@
-# Countries
+# [Countries App] Frontend Angular coding exercise
 
 This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 11.2.4.
+
+## Goal
+To create a single page Angular2+ application following the requirements listed below.
+
+Feel free to use any CSS framework or styling method or add more libraries, if and as needed.
+
+## Requirements
+- [x] Scaffold the project
+- [x] Use Angular httpClient to fetch the list of countries from: https://restcountries.eu/rest/v2/all
+- [x] Display result on the page
+- [x] Provide a way to filter list by country name
+- [x] Provide tested source code for review
+
 
 ## Development server
 
